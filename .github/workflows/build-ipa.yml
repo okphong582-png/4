@@ -28,6 +28,9 @@ jobs:
         run: |
           cd pip_swift
           pod install --no-repo-update || pod install
+          cd ..
+          find . -type f -name "*.sh" -exec chmod +x {} +
+          chmod -R +x pip_swift/Pods/ || true
 
       - name: Build unsigned .app
         run: |
@@ -65,5 +68,6 @@ jobs:
           name: "Hoangha Latest Build"
           body: "Bản build IPA tự động mới nhất của Hoangha. Hỗ trợ cài đặt qua TrollStore, AltStore, Sideloadly, Esign, Scarlet, v.v."
           files: build/Hoangha.ipa
+          make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
