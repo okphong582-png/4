@@ -256,17 +256,13 @@ enum PiPShortcutActionCenter {
     }
 }
 
-@available(iOS 26.0, *)
+@available(iOS 16.0, *)
 public struct StartFloatingWindowIntent: AppIntent {
     public static var title: LocalizedStringResource = "打开悬浮窗"
     public static var description = IntentDescription("打开全局高刷悬浮窗")
     public static var openAppWhenRun: Bool = true
     public static var isDiscoverable: Bool { PiPShortcutFeatureAccess.isEnabled }
     public static var authenticationPolicy: IntentAuthenticationPolicy = .alwaysAllowed
-
-    public static var supportedModes: IntentModes {
-        .foreground(.immediate)
-    }
 
     public init() {}
 
@@ -276,17 +272,13 @@ public struct StartFloatingWindowIntent: AppIntent {
     }
 }
 
-@available(iOS 26.0, *)
+@available(iOS 16.0, *)
 public struct HideFloatingWindowIntent: AppIntent {
     public static var title: LocalizedStringResource = "一键0.1pt"
     public static var description = IntentDescription("将已吸附的悬浮窗缩小到0.1pt")
     public static var openAppWhenRun: Bool = true
     public static var isDiscoverable: Bool { PiPShortcutFeatureAccess.isEnabled }
     public static var authenticationPolicy: IntentAuthenticationPolicy = .alwaysAllowed
-
-    public static var supportedModes: IntentModes {
-        .foreground(.immediate)
-    }
 
     public init() {}
 
@@ -296,17 +288,13 @@ public struct HideFloatingWindowIntent: AppIntent {
     }
 }
 
-@available(iOS 26.0, *)
+@available(iOS 16.0, *)
 public struct StartAndHideFloatingWindowIntent: AppIntent {
     public static var title: LocalizedStringResource = "打开并一键0.1pt"
     public static var description = IntentDescription("打开全局高刷悬浮窗并缩小到0.1pt")
     public static var openAppWhenRun: Bool = true
     public static var isDiscoverable: Bool { PiPShortcutFeatureAccess.isEnabled }
     public static var authenticationPolicy: IntentAuthenticationPolicy = .alwaysAllowed
-
-    public static var supportedModes: IntentModes {
-        .foreground(.immediate)
-    }
 
     public init() {}
 
@@ -316,7 +304,7 @@ public struct StartAndHideFloatingWindowIntent: AppIntent {
     }
 }
 
-@available(iOS 26.0, *)
+@available(iOS 16.0, *)
 public struct AppShortcuts: AppShortcutsProvider {
     public static var appShortcuts: [AppShortcut] {
         AppShortcut(
@@ -359,7 +347,7 @@ enum PiPShortcutRuntimeRegistration {
     }
 
     static func refreshProviderIfAvailable() {
-        guard #available(iOS 26.0, *) else { return }
+        guard #available(iOS 16.0, *) else { return }
         _ = AppShortcuts.appShortcuts.count
         AppShortcuts.updateAppShortcutParameters()
     }

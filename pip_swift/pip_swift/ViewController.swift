@@ -700,7 +700,7 @@ class ViewController: UIViewController, AVPictureInPictureControllerDelegate {
         AppDebugLogger.log("Home viewDidLoad")
         PowerUsageLogger.markLaunch()
         KeepAliveNotificationTester.sanitizeOnLaunch()
-        let keepAliveInterruptionNotice = KeepAliveLogger.markAppLaunch()
+        _ = KeepAliveLogger.markAppLaunch()
 
         loadHomePreferences()
         loadPiPRuntimeState()
@@ -5637,15 +5637,7 @@ private final class PiPHeightEditorViewController: UIViewController {
     }
 
     private func makeSliderGlassContainer() -> UIVisualEffectView {
-        let effectView: UIVisualEffectView
-        if #available(iOS 26.0, *) {
-            let effect = UIGlassEffect(style: .regular)
-            effect.isInteractive = true
-            effect.tintColor = UIColor.systemBlue.withAlphaComponent(0.08)
-            effectView = UIVisualEffectView(effect: effect)
-        } else {
-            effectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
-        }
+        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
 
         effectView.layer.cornerRadius = 24
         effectView.layer.cornerCurve = .continuous

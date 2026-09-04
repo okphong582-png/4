@@ -7,6 +7,30 @@ import SwiftUI
 import UIKit
 import Combine
 
+// MARK: - Compatibility Stubs
+struct GlassEffectConfig {
+    static let regular = GlassEffectConfig()
+    func interactive() -> GlassEffectConfig { self }
+}
+
+extension View {
+    func glassEffect(_ config: GlassEffectConfig = .regular, in shape: some Shape) -> some View {
+        self
+    }
+}
+
+final class UIGlassEffect: UIVisualEffect {
+    enum Style {
+        case regular
+        case clear
+    }
+    var isInteractive: Bool = false
+    var tintColor: UIColor?
+    convenience init(style: Style = .regular) {
+        self.init()
+    }
+}
+
 private struct AdaptiveLayoutMetrics {
     static var current: AdaptiveLayoutMetrics {
         AdaptiveLayoutMetrics(size: UIScreen.main.bounds.size)

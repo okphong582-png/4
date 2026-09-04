@@ -884,11 +884,7 @@ private struct FrameRateGlassIconButtonStyle: ButtonStyle {
         isPressed: Bool,
         shape: Circle
     ) -> some View {
-        if #available(iOS 26.0, *) {
-            shape
-                .fill(Color(UIColor.secondarySystemBackground).opacity(isPressed ? 0.42 : 0.24))
-                .glassEffect(.regular.interactive(), in: shape)
-        } else if #available(iOS 15.0, *) {
+        if #available(iOS 15.0, *) {
             shape
                 .fill(.ultraThinMaterial)
                 .overlay(

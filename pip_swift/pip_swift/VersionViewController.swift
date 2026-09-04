@@ -734,15 +734,8 @@ final class LatestChangelogViewController: UIViewController {
         card.layer.shadowOffset = CGSize(width: 0, height: 10)
         view.addSubview(card)
 
-        let glassView: UIVisualEffectView
-        if #available(iOS 26.0, *) {
-            let effect = UIGlassEffect(style: .regular)
-            effect.isInteractive = true
-            glassView = UIVisualEffectView(effect: effect)
-        } else {
-            glassView = UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
-            glassView.contentView.backgroundColor = UIColor.secondarySystemBackground.withAlphaComponent(0.42)
-        }
+        let glassView = UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
+        glassView.contentView.backgroundColor = UIColor.secondarySystemBackground.withAlphaComponent(0.42)
         glassView.layer.cornerRadius = 30
         glassView.layer.cornerCurve = .continuous
         glassView.clipsToBounds = true
@@ -1137,15 +1130,8 @@ private final class UpdateAvailableViewController: UIViewController {
     }
 
     private func makeGlassView(cornerRadius: CGFloat) -> UIVisualEffectView {
-        let glassView: UIVisualEffectView
-        if #available(iOS 26.0, *) {
-            let effect = UIGlassEffect(style: .regular)
-            effect.isInteractive = true
-            glassView = UIVisualEffectView(effect: effect)
-        } else {
-            glassView = UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
-            glassView.contentView.backgroundColor = UIColor.secondarySystemBackground.withAlphaComponent(0.42)
-        }
+        let glassView = UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
+        glassView.contentView.backgroundColor = UIColor.secondarySystemBackground.withAlphaComponent(0.42)
         glassView.layer.cornerRadius = cornerRadius
         glassView.layer.cornerCurve = .continuous
         glassView.clipsToBounds = true
@@ -1210,15 +1196,8 @@ private final class UpdateStatusViewController: UIViewController {
         card.layer.shadowOffset = CGSize(width: 0, height: 8)
         view.addSubview(card)
 
-        let glassView: UIVisualEffectView
-        if #available(iOS 26.0, *) {
-            let effect = UIGlassEffect(style: .regular)
-            effect.isInteractive = true
-            glassView = UIVisualEffectView(effect: effect)
-        } else {
-            glassView = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
-            glassView.contentView.backgroundColor = UIColor.systemGroupedBackground.withAlphaComponent(0.42)
-        }
+        let glassView = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+        glassView.contentView.backgroundColor = UIColor.systemGroupedBackground.withAlphaComponent(0.42)
         glassView.layer.cornerRadius = cornerRadius
         glassView.layer.cornerCurve = .continuous
         glassView.clipsToBounds = true
