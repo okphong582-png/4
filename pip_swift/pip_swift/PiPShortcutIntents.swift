@@ -261,12 +261,13 @@ public struct StartFloatingWindowIntent: AppIntent {
     public static var title: LocalizedStringResource = "打开悬浮窗"
     public static var description = IntentDescription("打开全局高刷悬浮窗")
     public static var openAppWhenRun: Bool = true
-    public static var isDiscoverable: Bool { PiPShortcutFeatureAccess.isEnabled }
+    public static var isDiscoverable: Bool = true
     public static var authenticationPolicy: IntentAuthenticationPolicy = .alwaysAllowed
 
     public init() {}
 
     public func perform() async throws -> some IntentResult {
+        guard PiPShortcutFeatureAccess.isEnabled else { return .result() }
         PiPShortcutActionCenter.request(.startFloatingWindow)
         return .result()
     }
@@ -277,12 +278,13 @@ public struct HideFloatingWindowIntent: AppIntent {
     public static var title: LocalizedStringResource = "一键0.1pt"
     public static var description = IntentDescription("将已吸附的悬浮窗缩小到0.1pt")
     public static var openAppWhenRun: Bool = true
-    public static var isDiscoverable: Bool { PiPShortcutFeatureAccess.isEnabled }
+    public static var isDiscoverable: Bool = true
     public static var authenticationPolicy: IntentAuthenticationPolicy = .alwaysAllowed
 
     public init() {}
 
     public func perform() async throws -> some IntentResult {
+        guard PiPShortcutFeatureAccess.isEnabled else { return .result() }
         PiPShortcutActionCenter.request(.hideFloatingWindow)
         return .result()
     }
@@ -293,12 +295,13 @@ public struct StartAndHideFloatingWindowIntent: AppIntent {
     public static var title: LocalizedStringResource = "打开并一键0.1pt"
     public static var description = IntentDescription("打开全局高刷悬浮窗并缩小到0.1pt")
     public static var openAppWhenRun: Bool = true
-    public static var isDiscoverable: Bool { PiPShortcutFeatureAccess.isEnabled }
+    public static var isDiscoverable: Bool = true
     public static var authenticationPolicy: IntentAuthenticationPolicy = .alwaysAllowed
 
     public init() {}
 
     public func perform() async throws -> some IntentResult {
+        guard PiPShortcutFeatureAccess.isEnabled else { return .result() }
         PiPShortcutActionCenter.request(.startAndHideFloatingWindow)
         return .result()
     }
